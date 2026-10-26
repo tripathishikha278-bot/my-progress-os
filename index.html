@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Progress OS — Student Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><div class="brand-mark">✦</div><div><strong>My Progress OS</strong><small>Learn · Build · Grow</small></div></div>
+      <nav class="nav">
+        <button class="nav-link active" data-view="home">⌂ <span>Dashboard</span></button>
+        <button class="nav-link" data-view="schedule">▦ <span>Weekly schedule</span></button>
+        <button class="nav-link" data-view="tasks">☑ <span>Tasks</span></button>
+        <button class="nav-link" data-view="learning">⌘ <span>Learning roadmap</span></button>
+        <button class="nav-link" data-view="projects">▣ <span>Projects</span></button>
+        <button class="nav-link" data-view="platforms">◎ <span>Platforms</span></button>
+        <button class="nav-link" data-view="progress">↗ <span>Progress</span></button>
+        <button class="nav-link" data-view="journal">▤ <span>Daily journal</span></button>
+      </nav>
+      <div class="sidebar-note"><span class="sparkle">✦</span><p>Small steps every day add up.</p><small>Consistency over perfection.</small></div>
+      <div class="sidebar-bottom">Semester 1 <span>·</span> 2 months to go</div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" aria-label="Toggle navigation">☰</button>
+        <div><p class="eyebrow" id="dateLabel">YOUR PERSONAL COMMAND CENTER</p><h1 id="greeting">Let's make today count.</h1><p class="subheading">You don't have to do everything today. Just the next right thing.</p></div>
+        <div class="top-actions"><span class="semester-pill">B.Tech CSE · AI & ML</span><button class="avatar" title="Your profile">S</button></div>
+      </header>
+
+
+      <section class="motivation-banner" aria-label="Today's motivation">
+        <div class="motivation-orb orb-one"></div><div class="motivation-orb orb-two"></div>
+        <div class="motivation-copy">
+          <p class="eyebrow">A LITTLE REMINDER FOR TODAY ✦</p>
+          <h2 id="motivationQuote">You don't need to have it all figured out. Just keep showing up.</h2>
+          <p id="motivationAuthor">Your future is built by the small things you repeat.</p>
+          <button class="motivation-button" id="newMotivation">Give me another thought <span>↗</span></button>
+        </div>
+        <div class="motivation-art" aria-hidden="true"><div class="motivation-sun">✦</div><div class="motivation-ring ring-a"></div><div class="motivation-ring ring-b"></div><div class="motivation-star star-a">✧</div><div class="motivation-star star-b">✦</div><div class="motivation-sticker">ONE STEP<br>AT A TIME</div></div>
+      </section>
+
+      <section class="view active" id="view-home">
+        <div class="stats-grid">
+          <article class="stat-card hero-stat"><div class="stat-top"><span>Semester focus</span><span class="stat-icon green">↗</span></div><div class="stat-number" id="overallPercent">0%</div><div class="progress-track"><div class="progress-fill green-fill" id="overallBar"></div></div><p class="muted">Today's tasks completed</p></article>
+          <article class="stat-card"><div class="stat-top"><span>Today's focus</span><span class="stat-icon yellow">✦</span></div><h3 id="focusSubject">Python + College</h3><p class="muted">Follow your planned focus, not every distraction.</p></article>
+          <article class="stat-card"><div class="stat-top"><span>Focused time today</span><span class="stat-icon blue">◷</span></div><div class="stat-number"><span id="todayMinutes">0</span><small> min</small></div><p class="muted">Log sessions using the focus timer.</p></article>
+          <article class="stat-card"><div class="stat-top"><span>Semester runway</span><span class="stat-icon purple">⌁</span></div><div class="stat-number">8 <small>weeks</small></div><p class="muted">Build foundations steadily.</p></article>
+        </div>
+
+        <div class="content-grid">
+          <section class="panel">
+            <div class="panel-heading"><div><p class="eyebrow">MAKE IT HAPPEN</p><h2>Today's tasks</h2></div><button class="text-button" data-goto="tasks">View all →</button></div>
+            <form id="quickTaskForm" class="quick-add"><input id="quickTaskInput" placeholder="Add a task you want to finish…" maxlength="100" required><select id="quickTaskCategory" aria-label="Task category"><option>College</option><option>Python</option><option>DSA</option><option>LeetCode</option><option>GitHub</option><option>Project</option><option>Personal</option></select><button class="primary-button" type="submit">Add</button></form>
+            <div id="todayTaskList" class="task-list"></div>
+            <div id="emptyToday" class="empty-state hidden">No tasks yet. Add one small, clear task above.</div>
+          </section>
+          <section class="panel mentor-panel">
+            <div class="panel-heading"><div><p class="eyebrow">MENTOR'S NOTE</p><h2>Your next best move</h2></div><span class="stat-icon purple">✧</span></div>
+            <div class="mentor-callout"><strong>Build foundations before chasing everything.</strong><p>For now, prioritise college, Python fundamentals, and starting DSA gently. LeetCode is practice—not a separate subject. GitHub is where you keep your work.</p></div>
+            <ul class="mentor-list"><li><span>01</span> Learn a concept</li><li><span>02</span> Write code without copying</li><li><span>03</span> Record what you learned</li></ul>
+            <button class="secondary-button full-button" data-goto="learning">Open my roadmap →</button>
+          </section>
+        </div>
+
+        <div class="bottom-grid">
+          <section class="panel">
+            <div class="panel-heading"><div><p class="eyebrow">YOUR WEEK AT A GLANCE</p><h2>Weekly rhythm</h2></div><button class="text-button" data-goto="schedule">Full schedule →</button></div>
+            <div id="weekPreview" class="week-preview"></div>
+            <div class="legend"><span><i class="dot college"></i>College</span><span><i class="dot python"></i>Python</span><span><i class="dot dsa"></i>DSA</span><span><i class="dot project"></i>Project / review</span></div>
+          </section>
+          <section class="panel">
+            <div class="panel-heading"><div><p class="eyebrow">SHOW UP REGULARLY</p><h2>Focus timer</h2></div><span class="stat-icon blue">◷</span></div>
+            <p class="muted">Choose what you're working on. You can also log a session manually.</p>
+            <div class="timer-display" id="timerDisplay">25:00</div>
+            <div class="timer-controls"><button class="primary-button" id="timerStart">Start focus</button><button class="secondary-button" id="timerReset">Reset</button></div>
+            <div class="timer-settings"><label>Focus area<select id="timerCategory"><option>Python</option><option>DSA</option><option>College</option><option>Project</option><option>LeetCode</option><option>Other</option></select></label><label>Minutes<input id="timerLength" type="number" min="5" max="120" value="25"></label></div>
+            <p class="timer-status muted" id="timerStatus">A focused 25 minutes is a good start.</p>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="view-schedule">
+        <div class="page-heading"><div><p class="eyebrow">PLAN, DON'T OVERPACK</p><h2>Weekly schedule</h2><p class="muted">A flexible template. Move blocks around your actual college timetable.</p></div><button class="secondary-button" id="resetSchedule">Restore template</button></div>
+        <div class="panel"><div class="schedule-note"><strong>Rule of thumb:</strong> college deadlines first, then the day's learning focus. Keep breaks and sleep protected.</div><div id="fullSchedule" class="full-schedule"></div></div>
+        <div class="panel schedule-key"><h3>Suggested study blocks outside college</h3><div class="schedule-cards"><div><b>45 min</b><span>College revision</span></div><div><b>45–60 min</b><span>Python or DSA</span></div><div><b>20–30 min</b><span>Practice / review</span></div><div><b>20 min Sunday</b><span>Weekly planning</span></div></div></div>
+      </section>
+
+      <section class="view" id="view-tasks">
+        <div class="page-heading"><div><p class="eyebrow">ONE CLEAR NEXT STEP</p><h2>Task manager</h2><p class="muted">Make tasks small enough to start, and specific enough to finish.</p></div></div>
+        <div class="panel">
+          <form id="taskForm" class="task-form"><input id="taskInput" placeholder="e.g. Practise Python input and type conversion" maxlength="100" required><select id="taskCategory"><option>College</option><option>Python</option><option>DSA</option><option>LeetCode</option><option>GitHub</option><option>Project</option><option>Personal</option></select><select id="taskDay"><option value="Today">Today</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select><button class="primary-button" type="submit">Add task</button></form>
+          <div class="filter-row"><button class="filter active" data-filter="all">All tasks</button><button class="filter" data-filter="open">To do</button><button class="filter" data-filter="done">Completed</button></div>
+          <div id="allTaskList" class="task-list"></div><div id="emptyAll" class="empty-state hidden">Nothing here yet. Add your first task above.</div>
+        </div>
+      </section>
+
+      <section class="view" id="view-learning">
+        <div class="page-heading"><div><p class="eyebrow">YOUR FIRST-SEMESTER ROADMAP</p><h2>Learning roadmap</h2><p class="muted">Track topics you have studied. Tick a topic only when you can explain or use it.</p></div></div>
+        <div class="roadmap-grid" id="roadmapGrid"></div>
+        <div class="panel mentor-panel"><p class="eyebrow">MENTOR'S GUIDANCE</p><h3>What to prioritise over the next 8 weeks</h3><ol class="numbered-list"><li><b>Weeks 1–2:</b> Python variables, conditions, loops, and daily exercises; begin DSA with Big-O and arrays.</li><li><b>Weeks 3–4:</b> Python strings, lists, dictionaries, and functions; practise array and string problems.</li><li><b>Weeks 5–6:</b> Python files, exceptions, modules; learn searching and basic sorting.</li><li><b>Weeks 7–8:</b> revise weak topics, solve beginner problems, tidy GitHub repositories, and finish a small project milestone.</li></ol><p class="muted small">Adjust this plan to your syllabus and exam dates. If college gets busy, keep Python/DSA sessions shorter rather than dropping sleep.</p></div>
+      </section>
+
+      <section class="view" id="view-projects">
+        <div class="page-heading"><div><p class="eyebrow">LEARN BY BUILDING</p><h2>Projects</h2><p class="muted">One finished, explainable project is more useful than five abandoned starts.</p></div><button class="primary-button" id="addProjectButton">+ Add project</button></div>
+        <div class="project-grid" id="projectGrid"></div>
+        <div class="panel"><p class="eyebrow">PROJECT RULE</p><h3>Build your productivity tracker in small milestones</h3><div class="milestones"><div><span>01</span><b>Dashboard layout</b><small>HTML structure + responsive CSS</small></div><div><span>02</span><b>Tasks that work</b><small>JavaScript events and rendering</small></div><div><span>03</span><b>Save records</b><small>Local storage + reload testing</small></div><div><span>04</span><b>Polish and publish</b><small>README + GitHub Pages (optional)</small></div></div></div>
+      </section>
+
+      <section class="view" id="view-platforms">
+        <div class="page-heading"><div><p class="eyebrow">TOOLS, NOT MORE PRESSURE</p><h2>Platform tracker</h2><p class="muted">Keep the platforms useful and lightweight.</p></div></div>
+        <div class="platform-grid">
+          <article class="platform-card"><div class="platform-logo github-logo">GH</div><div><h3>GitHub</h3><p>Store and present your code.</p></div><span class="platform-status">Build habit</span><ul><li>Separate C and Python practice repositories</li><li>Commit meaningful progress</li><li>Add a short README to each repository</li></ul><a href="https://github.com/" target="_blank" rel="noreferrer">Open GitHub ↗</a></article>
+          <article class="platform-card"><div class="platform-logo leetcode-logo">LC</div><div><h3>LeetCode</h3><p>Practise problem-solving.</p></div><span class="platform-status">Start easy</span><ul><li>Begin with relevant easy problems</li><li>Write down mistakes</li><li>Review before trying a harder version</li></ul><a href="https://leetcode.com/" target="_blank" rel="noreferrer">Open LeetCode ↗</a></article>
+          <article class="platform-card"><div class="platform-logo linkedin-logo">in</div><div><h3>LinkedIn</h3><p>Your professional profile.</p></div><span class="platform-status">Set up once</span><ul><li>Add accurate education details</li><li>List skills you actually know</li><li>Share a learning update occasionally, if useful</li></ul><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">Open LinkedIn ↗</a></article>
+          <article class="platform-card"><div class="platform-logo vscode-logo">&lt;/&gt;</div><div><h3>VS Code</h3><p>Your everyday coding workspace.</p></div><span class="platform-status">Use daily</span><ul><li>Keep folders organised</li><li>Run your own code</li><li>Practise Git from the terminal</li></ul><a href="https://code.visualstudio.com/" target="_blank" rel="noreferrer">VS Code website ↗</a></article>
+        </div>
+        <div class="panel"><h3>Platform reminder</h3><p class="muted">LeetCode practice counts as DSA. GitHub updates happen when you finish code. LinkedIn can wait until your profile is complete. None of these needs a separate daily study block.</p></div>
+      </section>
+
+      <section class="view" id="view-progress">
+        <div class="page-heading"><div><p class="eyebrow">NOTICE THE WORK YOU DO</p><h2>Progress & reflection</h2><p class="muted">Use the records to learn what works for you—not to judge yourself.</p></div></div>
+        <div class="stats-grid progress-stats"><article class="stat-card"><span class="muted">Tasks completed</span><div class="stat-number" id="totalDone">0</div></article><article class="stat-card"><span class="muted">Focus minutes logged</span><div class="stat-number" id="totalMinutes">0</div></article><article class="stat-card"><span class="muted">Roadmap topics checked</span><div class="stat-number" id="topicsDone">0</div></article><article class="stat-card"><span class="muted">Projects in progress</span><div class="stat-number" id="projectsActive">0</div></article></div>
+        <div class="panel"><div class="panel-heading"><div><p class="eyebrow">THIS WEEK</p><h2>Focus time by area</h2></div></div><div id="focusChart" class="focus-chart"></div><p class="muted small">Only timer sessions completed in this browser are counted. This is a simple record, not a measure of your worth or ability.</p></div>
+        <div class="panel"><h3>Weekly review prompts</h3><div class="reflection-grid"><label>What went well?<textarea id="reviewWentWell" placeholder="e.g. I practised Python on three days…"></textarea></label><label>What felt difficult?<textarea id="reviewDifficult" placeholder="e.g. I underestimated college assignment time…"></textarea></label><label>What is one adjustment for next week?<textarea id="reviewNext" placeholder="e.g. Start DSA with a shorter session…"></textarea></label></div><button class="primary-button" id="saveReview">Save weekly review</button><span id="reviewSaved" class="saved-message" aria-live="polite"></span></div>
+      </section>
+
+      <section class="view" id="view-journal">
+        <div class="page-heading"><div><p class="eyebrow">CLOSE THE DAY GENTLY</p><h2>Daily journal</h2><p class="muted">A few honest lines are enough. You don't need a perfect productivity day.</p></div></div>
+        <div class="journal-layout">
+          <div class="panel journal-panel">
+            <div class="journal-intro"><span class="journal-icon">✎</span><div><h3>Your day, your words.</h3><p>Be honest, not perfect. Even a small win counts.</p></div></div>
+            <label>How did I spend my day?<textarea id="journalWorked" placeholder="College, commute, study sessions, rest, time with people…"></textarea></label>
+            <label>What productive things did I do today?<textarea id="journalLearned" placeholder="Finished an assignment, practised Python, understood a concept, helped someone…"></textarea></label>
+            <div class="journal-two-col"><label>How focused did I feel today?<select id="journalMood"><option value="">Choose one</option><option>Very focused</option><option>Mostly focused</option><option>A little distracted</option><option>It was a difficult day</option></select></label><label>Approx. scrolling / distraction time<input id="journalScrolling" type="text" placeholder="e.g. 1 hour, not sure"></label></div>
+            <label>What did I learn about myself today?<textarea id="journalReflection" placeholder="What worked? What distracted me? What would I change gently tomorrow?"></textarea></label>
+            <label>Tomorrow's first small step<textarea id="journalTomorrow" placeholder="One clear thing I can start with…"></textarea></label>
+            <button class="primary-button" id="saveJournal">Save today's reflection ✦</button><span id="journalSaved" class="saved-message" aria-live="polite"></span>
+            <div class="journal-history"><h3>Recent notes</h3><div id="journalHistory" class="history-list"></div></div>
+          </div>
+          <aside class="panel journal-side"><div class="journal-side-art">✧</div><p class="eyebrow">REMEMBER THIS</p><h3>A day doesn't need to be perfect to be meaningful.</h3><p class="muted">Track what happened without judging yourself. Use the notes to notice patterns and make tomorrow a little easier.</p><div class="tiny-prompt"><span>01</span><p>Celebrate one thing you did.</p></div><div class="tiny-prompt"><span>02</span><p>Notice one thing that distracted you.</p></div><div class="tiny-prompt"><span>03</span><p>Choose one realistic next step.</p></div></aside>
+        </div>
+      </section>
+      <footer class="footer">Made for steady progress, not perfection. <span>Data is stored locally in this browser.</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
